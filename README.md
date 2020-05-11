@@ -1,5 +1,7 @@
-# snake_rust
+# SNAKE RUST
 
 For launch
 
-### cargo run
+```
+cargo run
+```
