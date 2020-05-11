@@ -58,7 +58,7 @@ impl Snake {
 
     pub fn snake_move(&mut self) {
         let mut next_move: Direction = Direction::Right;
-        let mut buff_next_move: Direction = Direction::Right;
+        let mut buff_next_move: Direction;
         
         for i in 0..self.blocks.len() {
             match &self.blocks[i].direction {
@@ -103,7 +103,7 @@ impl Snake {
         let x = self.blocks[0].x;
         let y = self.blocks[0].y;
 
-        if(x < 0.0 || x > 600.0 || y < 0.0 || y > 600.0) {
+        if x < 0.0 || x > 600.0 || y < 0.0 || y > 600.0 {
             is_collision = true;
         }
 
@@ -137,7 +137,7 @@ impl Snake {
     pub fn check_eat(&mut self, x: f64, y: f64) -> bool {
         let mut is_check = false;
 
-        if(self.blocks[0].x == x && self.blocks[0].y == y) {
+        if self.blocks[0].x == x && self.blocks[0].y == y {
             let mut x = self.blocks[self.blocks.len() - 1].x;
             let mut y = self.blocks[self.blocks.len() - 1].y;
             let direction = self.blocks[self.blocks.len() - 1].direction.clone();

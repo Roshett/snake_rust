@@ -15,22 +15,12 @@ fn main() {
         .build()
         .unwrap();
 
-    let assets = find_folder::Search::ParentsThenKids(3, 3)
-        .for_folder("assets")
-        .unwrap();
-
-    println!("{:?}", assets);
-
-    let mut glyphs = window
-        .load_font(assets.join("FiraSans-Regular.ttf"))
-        .unwrap();
-
     let mut snake = snake::Snake::new(0.0, 60.0);
     let mut game = game::Game::new();
     game.span_food();
 
     while let Some(event) = window.next() {
-        window.draw_2d(&event, |c, g, device| {
+        window.draw_2d(&event, |c, g, _| {
             clear(BACK_COLOR, g);
             game.draw_food(c.transform, g);
             snake.draw(c.transform, g);

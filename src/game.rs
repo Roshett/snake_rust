@@ -19,7 +19,7 @@ pub struct Food {
 
 impl Game {
     pub fn new() -> Game {
-        let mut food = Food {x: 90.0, y: 90.0, size: FOOD_SIZE};
+        let food = Food {x: 90.0, y: 90.0, size: FOOD_SIZE};
         Game { step_time: 0.0, food}
     }
 
