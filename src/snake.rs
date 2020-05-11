@@ -103,12 +103,17 @@ impl Snake {
         let x = self.blocks[0].x;
         let y = self.blocks[0].y;
 
+        if(x < 0.0 || x > 600.0 || y < 0.0 || y > 600.0) {
+            is_collision = true;
+        }
+
         for i in 1..self.blocks.len() {
             if self.blocks[i].x == x && self.blocks[i].y == y {
                 is_collision = true;
                 break;
             } 
         }
+
 
         is_collision
     }

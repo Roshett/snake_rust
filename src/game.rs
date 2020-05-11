@@ -4,6 +4,7 @@ use rand::Rng;
 const SPEED: f64 = 0.1;
 const FOOD_SIZE: f64 = 30.0;
 const FOOD_COLOR: [f32; 4] = [0.0, 0.0, 0.0, 1.0];
+const DIE_COLOR: [f32; 4] = [1.0, 0.0, 0.0, 0.3];
 
 pub struct Game {
     pub step_time: f64,
@@ -33,11 +34,13 @@ impl Game {
         
         self.food.x = x as f64;
         self.food.y = y as f64;
-
-        println!("{} {}", self.food.x, self.food.y);
     }
 
     pub fn draw_food<G: Graphics>(&self, t: math::Matrix2d,  g: &mut G) {
         rectangle(FOOD_COLOR, [self.food.x, self.food.y, self.food.size, self.food.size], t, g);
+    }
+
+    pub fn draw_die<G: Graphics>(&self, t: math::Matrix2d,  g: &mut G) {
+        rectangle(DIE_COLOR, [0.0, 0.0, 600.0, 600.0], t, g);
     }
 }
